@@ -8,6 +8,10 @@ go mod init
 
 ## echoを利用go get -u github.com/labstack/echo/...
 
+## memo
+
+### POSTのボディ受け取り
+
 
 
 
