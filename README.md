@@ -10,6 +10,12 @@ go mod init
 
 ## memo
 
+- 構造体と関数を紐づけて 関数→構造体 の依存関係を持たせる
+https://qiita.com/gorilla0513/items/7e734c4e0680b5ea341d
+
+
+
+
 ### POSTのボディ受け取り
 
 
