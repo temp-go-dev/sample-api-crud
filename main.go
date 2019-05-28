@@ -11,6 +11,7 @@ import (
 
 // main REST-APIサーバーの起動
 func main() {
+
 	e := echo.New()
 	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, sample.Sample())
