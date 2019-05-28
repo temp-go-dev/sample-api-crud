@@ -17,5 +17,8 @@ type cache struct {
 }
 
 
-### ドットインポート
+#### エラーハンドリング
+https://qiita.com/nayuneko/items/3c0b3c0de9e8b27c9548
 
+#### return nilはダメ
+https://qiita.com/najeira/items/0bb0acdd7a71fc3f559b

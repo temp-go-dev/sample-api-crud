@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo"
@@ -18,6 +19,7 @@ func main() {
 	})
 
 	// users endpoint
+	e.GET("/users", searchUsers)
 	e.POST("/users", createUser)
 	e.GET("/users/:id", readUser)
 	e.PUT("/users/:id", updateUser)
@@ -32,6 +34,14 @@ func main() {
 	e.Logger.Fatal(e.Start(":1323"))
 }
 
+func searchUsers(c echo.Context) error {
+	fmt.Println("aaas")
+	users, err := service.SearchUsers()
+	if err != nil {
+		return err
+	}
+	return c.JSON(http.StatusOK, users)
+}
 func createUser(c echo.Context) error {
 	user := model.User{}
 	if err := c.Bind(&user); err != nil {
