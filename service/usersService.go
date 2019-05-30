@@ -1,9 +1,6 @@
 package service
 
 import (
-	"database/sql"
-	"fmt"
-
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/google/uuid"
 	"github.com/temp-go-dev/sample-api-crud/model"
@@ -12,51 +9,65 @@ import (
 // SearchUsers ユーザー検索
 func SearchUsers() ([]model.User, error) {
 
-	db, err := sql.Open("mysql", "user:password@tcp(localhost:3306)/sampledb")
-	if err != nil {
-		fmt.Println(err.Error())
-		// TODO : この実装はいいのだろうか? あとで再考したほうがよい
-		return []model.User{}, err
-	}
-	defer db.Close()
+	// db, err := sql.Open("mysql", "user:password@tcp(localhost:3306)/sampledb")
+	// if err != nil {
+	// 	fmt.Println(err.Error())
+	// 	// TODO : この実装はいいのだろうか? あとで再考したほうがよい
+	// 	return []model.User{}, err
+	// }
+	// defer db.Close()
 
-	var (
-		id         string
-		firstName  string
-		lastName   string
-		email      string
-		passsword  string
-		phone      string
-		userStatus int
-		version    int
-	)
+	// var (
+	// 	id         string
+	// 	firstName  string
+	// 	lastName   string
+	// 	email      string
+	// 	passsword  string
+	// 	phone      string
+	// 	userStatus int
+	// 	version    int
+	// )
+
+	// var users []model.User
+
+	// rows, err := db.Query("SELECT id, first_name, last_name, email, password, phone, userStatus, version FROM user ORDER BY id")
+	// if err != nil {
+	// 	fmt.Println(err)
+	// 	return []model.User{}, err
+	// }
+	// defer rows.Close()
+	// for rows.Next() {
+	// 	err := rows.Scan(&id, &firstName, &lastName, &email, &passsword, &phone, &userStatus, &version)
+	// 	if err != nil {
+	// 		fmt.Println(err)
+	// 	}
+	// 	user := model.User{}
+	// 	user.Id = id
+	// 	user.FirstName = firstName
+	// 	user.LastName = lastName
+	// 	user.Email = email
+	// 	user.Password = passsword
+	// 	user.Phone = phone
+	// 	user.UserStatus = userStatus
+	// 	user.Version = version
+	// 	users = append(users, user)
+	// }
+
+	// return users, err
 
 	var users []model.User
+	user := model.User{}
+	user.Id = "id"
+	user.FirstName = "firstName"
+	user.LastName = "lastName"
+	user.Email = "email"
+	user.Password = "passsword"
+	user.Phone = "phone"
+	user.UserStatus = 1
+	user.Version = 2
+	users = append(users, user)
 
-	rows, err := db.Query("SELECT id, first_name, last_name, email, password, phone, userStatus, version FROM user ORDER BY id")
-	if err != nil {
-		fmt.Println(err)
-		return []model.User{}, err
-	}
-	defer rows.Close()
-	for rows.Next() {
-		err := rows.Scan(&id, &firstName, &lastName, &email, &passsword, &phone, &userStatus, &version)
-		if err != nil {
-			fmt.Println(err)
-		}
-		user := model.User{}
-		user.Id = id
-		user.FirstName = firstName
-		user.LastName = lastName
-		user.Email = email
-		user.Password = passsword
-		user.Phone = phone
-		user.UserStatus = userStatus
-		user.Version = version
-		users = append(users, user)
-	}
-
-	return users, err
+	return users, nil
 }
 
 // CreateUser user作成
@@ -73,37 +84,43 @@ func CreateUser(user *model.User) {
 // ReadUser user作成
 func ReadUser(userId string) model.User {
 
-	db, err := sql.Open("mysql", "user:password@tcp(localhost:3306)/sampledb")
+	// db, err := sql.Open("mysql", "user:password@tcp(localhost:3306)/sampledb")
 
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-	defer db.Close()
+	// if err != nil {
+	// 	fmt.Println(err.Error())
+	// }
+	// defer db.Close()
 
-	var (
-		id        string
-		firstName string
-		lastName  string
-		email     string
-	)
+	// var (
+	// 	id        string
+	// 	firstName string
+	// 	lastName  string
+	// 	email     string
+	// )
 
-	rows, err := db.Query("SELECT id, first_name, last_name, email FROM user ORDER BY RAND() LIMIT 1")
-	if err != nil {
-		fmt.Println(err)
-	}
-	defer rows.Close()
-	for rows.Next() {
-		err := rows.Scan(&id, &firstName, &lastName, &email)
-		if err != nil {
-			fmt.Println(err)
-		}
-	}
-	fmt.Println("->" + id + "/" + firstName + "/" + lastName + "/")
+	// rows, err := db.Query("SELECT id, first_name, last_name, email FROM user ORDER BY RAND() LIMIT 1")
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
+	// defer rows.Close()
+	// for rows.Next() {
+	// 	err := rows.Scan(&id, &firstName, &lastName, &email)
+	// 	if err != nil {
+	// 		fmt.Println(err)
+	// 	}
+	// }
+	// fmt.Println("->" + id + "/" + firstName + "/" + lastName + "/")
+	// user := model.User{}
+	// user.Id = id
+	// user.FirstName = firstName
+	// user.LastName = lastName
+	// user.Email = email
+	// return user
 	user := model.User{}
-	user.Id = id
-	user.FirstName = firstName
-	user.LastName = lastName
-	user.Email = email
+	user.Id = "id"
+	user.FirstName = "firstName"
+	user.LastName = "lastName"
+	user.Email = "email"
 	return user
 }
 
